@@ -1,0 +1,1 @@
+cmd_/home/derp/kernelSanders/kmod/kmod.ko := ld -r -m elf_x86_64 -T /usr/src/linux-headers-3.16-3-common/scripts/module-common.lds --build-id  -o /home/derp/kernelSanders/kmod/kmod.ko /home/derp/kernelSanders/kmod/kmod.o /home/derp/kernelSanders/kmod/kmod.mod.o
