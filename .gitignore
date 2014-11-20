@@ -29,3 +29,10 @@ list
 *.i*86
 *.x86_64
 *.hex
+
+# Kernel module stuff
+*.symvers
+*.order
+*.mod.c
+*.cmd
+.tmp_versions
