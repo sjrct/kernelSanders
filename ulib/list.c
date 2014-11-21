@@ -340,11 +340,11 @@ int main(int argc, char ** argv)
 
 	for (i = 0; i < sizeof(syscalls) / sizeof(*syscalls); i++) {
 		fprintf(f,
-			"\nglobal %s\n"
+			"\n.globl %s\n"
 			"%s:\n"
-			"\tmov rax, 0x%x\n"
-			"\tmov r11, 0x%x\n"
-			"\tint 0x%hx\n"
+			"\tmov $0x%x, %%rax\n"
+			"\tmov $0x%x, %%r11\n"
+			"\tint $0x%hx\n"
 			"\tret\n",
 			syscalls[i], syscalls[i],
 			MAGIC, i, INTNUM
