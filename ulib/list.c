@@ -336,7 +336,7 @@ int main(int argc, char ** argv)
 		return EXIT_FAILURE;
 	}
 
-	fprintf(f, "bits 64\nsection .text\n");
+	fprintf(f, ".text\n");
 
 	for (i = 0; i < sizeof(syscalls) / sizeof(*syscalls); i++) {
 		fprintf(f,
