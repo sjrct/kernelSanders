@@ -7,7 +7,3 @@ all:
 
 clean:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
-
-%.o: %.asm
-	@nasm -felf64 -o $@ $<
-	@echo "  AS [M]  $@"
