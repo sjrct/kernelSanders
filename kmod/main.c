@@ -2,6 +2,10 @@
 #include "handlers.h"
 #include "../cmn/common.h"
 
+MODULE_AUTHOR("Chris Harding");
+MODULE_DESCRIPTION("A hacky module that is intended to intercept system calls through a software interrupt.");
+MODULE_LICENSE("GPL");
+
 typedef struct idt_entry {
 	unsigned short lowaddr;
 	unsigned short selector;
