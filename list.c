@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "common.h"
+
 const char * syscalls[] = {
 	"read",
 	"write",
@@ -651,17 +653,18 @@ int main(int argc, char ** argv)
 		return EXIT_FAILURE;
 	}
 
+	fprintf(f, "bits 64\nsection .text\n");
+
 	for (i = 0; i < sizeof(syscalls) / sizeof(*syscalls); i++) {
-		fprintf(f, "long %s(", syscalls[i]);
-		for (j = 0; j < syscall_args[j]; j++) {
-			if (j) fprintf(f, ", ");
-			fprintf(f, "long a%d", j);
-		}
-		fprintf(f,
-			") {\n"
-			"	// Do some here\n"
-			"	return 0;\n"
-			"}\n\n"
+		fprintf(f
+			"\nglobal %s\n"
+			"%s:\n"
+			"\tmov rax, %lx\n"
+			"\tmov r11, %x\n"
+			"\tint %hx\n"
+			"\tret\n"
+			syscalls[i], syscalls[i],
+			MAGIC, i, INTNUM
 		);
 	}
 
