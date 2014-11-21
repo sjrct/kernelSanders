@@ -11,7 +11,7 @@ extern syscall_handlers_cnt
 global int_handler:
 int_handler:
 	; rax must be MAGIC or else!
-	cmp qword rax, MAGIC
+	cmp rax, MAGIC
 	jne do_actual
 
 	; verify the syscall is in the table

@@ -1,6 +1,6 @@
 #include <linux/module.h>
 #include "handlers.h"
-#include "../common.h"
+#include "../cmn/common.h"
 
 typedef struct idt_entry {
 	unsigned short lowaddr;
@@ -53,6 +53,7 @@ int init_module()
 	set_addr(idt + INTNUM, (unsigned long)int_handler);
 	asm volatile ("sti");
 
+	printk("Made it to the fucking bottem, now we are here.\n");
 	return 0;
 }
 
@@ -61,4 +62,5 @@ void cleanup_module()
 	asm volatile ("cli");
 	set_addr(idt + INTNUM, actual_int_addr);
 	asm volatile ("sti");
+	printk("And its turtles all the way down.\n");
 }

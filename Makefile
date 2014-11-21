@@ -1,8 +1,11 @@
-CC = gcc
-CFLAGS = -Wall
+all: FORCE
+	cd kmod; make
+	cd ulib; make
 
-list: list.c
-	$(CC) $(CFLAGS) list.c -o list
+clean: FORCE
+	cd kmod; make clean
+	cd ulib; make clean
 
-clean:
-	rm list
+.PHONY: FORCE
+FORCE:
+
