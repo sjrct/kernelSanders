@@ -3,12 +3,16 @@ kernelSanders
 
 ###Usage
 
-Run the following command to generate foo.S 
+To build the system and run the test application, do as follows:
 
 ```bash
-gcc list.c;./a.out foo.S;
+$ make
+# insmod kmod/kmod.ko
+$ gcc test.c
+$ LD_PRELOAD=ulib/ulib.so ./a.out
 ```
 
+However, I would not recommend doing this right now as the second line causes a kernel OOPS.
 
 TODOs
 =====
